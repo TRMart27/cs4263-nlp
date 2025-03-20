@@ -8,6 +8,18 @@
 #define INIT_DA_CAP 10 
 #define GROWTH_FACTOR 2
 
+#define da_init(arr) do\
+    {\
+        (arr)->size     = 0;\
+        (arr)->capacity = INIT_DA_CAP;\
+        (arr)->items    = malloc(sizeof(*(arr)->items));\
+        if(!(arr)->items)\
+        {\
+            perror("[ERROR]\tFailed to initialize (arr) in <da_init>!\n");\
+            exit(EXIT_FAILURE);\
+        }\
+    }while(0);
+
 #define da_append(arr, item) do\
     {\
         assert( (arr) );\
@@ -48,14 +60,14 @@ typedef struct DA
 
 
 //function prototypes
-DA da_init();
+DA da_alloc();
 void da_print(DA *arr);
 void da_free(DA* arr);
 
 
 #ifdef DA_IMPL_
 
-DA da_init()
+DA da_alloc()
 { 
     DA arr = {
         .size     = 0,
@@ -63,7 +75,6 @@ DA da_init()
         .items    = malloc(sizeof(*arr.items) * INIT_DA_CAP)
     };
 
-    printf("sizeof(*arr.items) => %zu\n", sizeof(*arr.items));
     //malloc can -> FAIL <- 
     if(!arr.items)
     {
@@ -87,11 +98,12 @@ void da_print(DA *arr)
 void da_free(DA* arr)
 {
     assert(arr);
+
+    free(arr->items);
     free(arr);
+
     return;
 }
-
-
 
 #endif //DA_IMPL_
 #endif //DA_H_
