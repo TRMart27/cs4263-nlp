@@ -70,26 +70,25 @@ CNN: Extracts n‑gram features via convolution and pooling
   - NLTK
   ** NOTE CUDA was used for training purposes. If CUDA is available, scripts will use the GPU, otherwise it will default to cpu. CUDA 12.8 was used for the development process (I believe).
 
-##Build Instructions
+## Build Instructions 
 - **Ensure checkpoints and data**
-    models/bert_bert.pt (fine-tuned BERT)
-    models/bilstm_best.pt (BiLSTM)
-    models/cnn_best.pt    (CNN)
-    data_bin/validate.pt  (processed validation tensors)
-      *if data is not loaded*
-        *python dataset.py --csv <your_local_path/to/csv>*
+    - models/bert_bert.pt (fine-tuned BERT)
+    - models/bilstm_best.pt (BiLSTM)
+    - models/cnn_best.pt    (CNN)
+    - data_bin/validate.pt  (processed validation tensors)
+       - *if data is not loaded run  - python dataset.py --csv <your_local_path/to/csv>*
    
 - **Install Libraries**
-    pip install torch transformers scikit-learn nltk tqdm pandas numpy
-      *CUDA is option but highly recommended. Please ensure your CUDA version is compatabile with PyTorch version*
+    - pip install torch transformers scikit-learn nltk tqdm pandas numpy
+       - *CUDA is option but highly recommended. Please ensure your CUDA version is compatabile with PyTorch version*
 
 - **Run Ensemble Script**
-    python ensemble.py
+    - python ensemble.py
 
 - **Inspect Output**
     - Macro F1 + Per-Class F1 + ROC-AUC prints to **STDOUT**
     - Tensor of probabilites saved to
-        models/run/ensemble_results.pt
+        - <models/run/ensemble_results.pt>
       
 
     
