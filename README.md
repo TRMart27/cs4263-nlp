@@ -88,10 +88,10 @@ CNN: Extracts n‑gram features via convolution and pooling
 - **Run Ensemble Script**
     - python ensemble.py
       - *if model weights are not available run*
-        *- python fine_tune_bert.py         !!ensure paths to --data_dir and --output_dir are aligned with expectations*
-        *- python train.py --model bilstm   !!ensure paths to --data_dir and --output_dir are aligned with expectations*
-        *- python train.py --model cnn      !!ensure paths to --data_dir and --output_dir are aligned with expectations*
-        *model weights will be saved in the provided --output_dir, defaults to models/*
+        -*- python fine_tune_bert.py         !!ensure paths to --data_dir and --output_dir are aligned with expectations*
+        -*- python train.py --model bilstm   !!ensure paths to --data_dir and --output_dir are aligned with expectations*
+        -*- python train.py --model cnn      !!ensure paths to --data_dir and --output_dir are aligned with expectations*
+        -*model weights will be saved in the provided --output_dir, defaults to models/*
 
 
 - **Inspect Output**
