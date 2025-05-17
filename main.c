@@ -1,6 +1,8 @@
 #DEFINE DA_IMPL_
 #include "da.h"
+#DEFINE HT_IMPL_
 #include "ht.h"
+#DEFINE TOKENIZER_IMPL_
 #include "tokenizer.h"
 
 int main(void)
