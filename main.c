@@ -1,3 +1,4 @@
+#DEFINE DA_IMPL_
 #include "da.h"
 #include "ht.h"
 #include "tokenizer.h"
