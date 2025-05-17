@@ -14,6 +14,7 @@ CNN: Extracts n‑gram features via convolution and pooling
 
 ## Project Structure -- AS IT STANDS (work in progress!)
 
+**c_headers/**
 - **ht.h**  
   Implements a header-only hash table for storing string keys and counting token frequencies. Uses separate chaining to handle collisions.  
   
@@ -28,6 +29,7 @@ CNN: Extracts n‑gram features via convolution and pooling
 - **tokenizer.h**  
   Provides a basic tokenizer that splits input strings into tokens using commas as delimiters. Currently, it prints tokens to stdout but can be extended to store tokens for further processing.
 
+**src/**
 - **bert.py**
     Defines a pretained "bert-base-uncased" model and a predict function for evaluating. Honestly I'm not entirely sure if I even use this or why I wrote this.
   
@@ -50,7 +52,7 @@ CNN: Extracts n‑gram features via convolution and pooling
     Combines the predictions from fine-tuned BERT, Bi-LSTM with attention, and CNN, applies the thresholds (hard-coded, I manually adjusted) to generate multi-label predictions, reports macro AND per-class F1 + ROC-AUC scores.
 
 
-
+**review/**
 - **tokenization.ipynb**
     My exploration of the BPE tokenization pipeline. This was implemented after I had realized I was biting time but was still too stubborn to give up doing things from scratch because that's where the fun programming is at. Had some functional version in python.
   
