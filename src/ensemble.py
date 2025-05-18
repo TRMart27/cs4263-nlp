@@ -158,7 +158,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_dir",   default="data")
     parser.add_argument("--base_model",   default="bert-base-uncased")
-    parser.add_argument("--bert_path",  default="models/best.pt")
+    parser.add_argument("--bert_path",  default="models/bert_best.pt")
     parser.add_argument("--lstm_path",  default="models/bilstm_best.pt")
     parser.add_argument("--cnn_path",   default="models/cnn_best.pt")
     parser.add_argument("--save_path",   default="models/runs")
