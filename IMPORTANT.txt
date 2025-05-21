@@ -1,1 +1,6 @@
 any changes made to the codebase after the deadline will be committed to a branch, the main branch contains the codebase pre-deadline
+
+
+CHANGES MADE :: 
+    1) move files to proper folders
+    2) get the proper model states in the repo, noticed I somehow missed the best_cnn.pt in the final submission 

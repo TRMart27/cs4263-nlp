@@ -14,6 +14,7 @@ CNN: Extracts n‑gram features via convolution and pooling
 
 ## Project Structure -- AS IT STANDS (work in progress!)
 
+**c_headers/**
 - **ht.h**  
   Implements a header-only hash table for storing string keys and counting token frequencies. Uses separate chaining to handle collisions.  
   
@@ -28,6 +29,7 @@ CNN: Extracts n‑gram features via convolution and pooling
 - **tokenizer.h**  
   Provides a basic tokenizer that splits input strings into tokens using commas as delimiters. Currently, it prints tokens to stdout but can be extended to store tokens for further processing.
 
+**src/**
 - **bert.py**
     Defines a pretained "bert-base-uncased" model and a predict function for evaluating. Honestly I'm not entirely sure if I even use this or why I wrote this.
   
@@ -50,7 +52,7 @@ CNN: Extracts n‑gram features via convolution and pooling
     Combines the predictions from fine-tuned BERT, Bi-LSTM with attention, and CNN, applies the thresholds (hard-coded, I manually adjusted) to generate multi-label predictions, reports macro AND per-class F1 + ROC-AUC scores.
 
 
-
+**review/**
 - **tokenization.ipynb**
     My exploration of the BPE tokenization pipeline. This was implemented after I had realized I was biting time but was still too stubborn to give up doing things from scratch because that's where the fun programming is at. Had some functional version in python.
   
@@ -71,19 +73,27 @@ CNN: Extracts n‑gram features via convolution and pooling
   ** NOTE CUDA was used for training purposes. If CUDA is available, scripts will use the GPU, otherwise it will default to cpu. CUDA 12.8 was used for the development process (I believe).
 
 ## Build Instructions 
+- **Install Libraries**
+    - pip install torch transformers scikit-learn nltk tqdm pandas numpy
+       - *CUDA is option but highly recommended. Please ensure your CUDA version is compatabile with PyTorch version*
+     
+       - 
 - **Ensure checkpoints and data**
     - models/bert_bert.pt (fine-tuned BERT)
     - models/bilstm_best.pt (BiLSTM)
     - models/cnn_best.pt    (CNN)
     - data_bin/validate.pt  (processed validation tensors)
        - *if data is not loaded run  - python dataset.py --csv <your_local_path/to/csv>*
-   
-- **Install Libraries**
-    - pip install torch transformers scikit-learn nltk tqdm pandas numpy
-       - *CUDA is option but highly recommended. Please ensure your CUDA version is compatabile with PyTorch version*
 
 - **Run Ensemble Script**
     - python ensemble.py
+      - *if model weights are not available run*
+        1) python fine_tune_bert.py         
+        2) python train.py --model bilstm   
+        3) python train.py --model cnn 
+
+        *!!ensure paths to --data_dir and --output_dir are aligned with expectations, model weights will be saved by default to models/*
+
 
 - **Inspect Output**
     - Macro F1 + Per-Class F1 + ROC-AUC prints to **STDOUT**
